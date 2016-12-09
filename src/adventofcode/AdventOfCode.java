@@ -102,7 +102,7 @@ public class AdventOfCode {
                             break;
                         case "-d":
                         case "--day":
-                            int day = Integer.parseInt(args[1]) - 1;
+                            int day = Integer.parseInt(args[i+1]) - 1;
                             i++;
                             aoc.runDay(day);
                             break;
