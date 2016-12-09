@@ -27,12 +27,13 @@ public class Day09 extends ADay {
                         processOpenBracket(sc);
                         break;
                     default:
-                        if(next.matches("[a-zA-Z0-9\\(\\)]+"))
-                        sb.append(next);
+                        if (next.matches("[a-zA-Z0-9\\(\\)]+")) {
+                            sb.append(next);
+                        }
                 }
             }
 
-            System.out.printf("%d characters in %s\n",sb.length(),sb.toString());
+            System.out.printf("%d characters in %s\n", sb.length(), sb.toString());
         }
     }
 
