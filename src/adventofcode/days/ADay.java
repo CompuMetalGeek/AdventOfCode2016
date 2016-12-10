@@ -1,4 +1,4 @@
-package days;
+package adventofcode.days;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

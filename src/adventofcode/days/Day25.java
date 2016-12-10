@@ -1,11 +1,11 @@
-package days;
+package adventofcode.days;
 
 import java.util.Scanner;
 
-public class Day11 extends ADay {
+public class Day25 extends ADay {
 
-    public Day11() {
-        super(11);
+    public Day25() {
+        super(25);
     }
 
     @Override

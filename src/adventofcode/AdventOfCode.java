@@ -1,6 +1,6 @@
 package adventofcode;
 
-import days.ADay;
+import adventofcode.days.ADay;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -19,20 +19,17 @@ public class AdventOfCode {
      */
     private void loadClasses() {
         classes = new ArrayList<>();
-        try {
             for (int i = 1; i < 32; i++) {
                 try {
-                    ADay day = (ADay) Class.forName("days.Day" + (i < 10 ? "0" + i : i)).getConstructor().newInstance(); // get instance of class
+                    ADay day = (ADay) Class.forName("adventofcode.days.Day" + (i < 10 ? "0" + i : i)).getConstructor().newInstance(); // get instance of class
                     if (day.hasInputFile()) { // class has input file
                         classes.add(day);
                     }
-                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) { // problem with creation of class
-                    System.out.println("Could not create an instance of class 'days.Day" + i + "'.");
+                } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) { // problem with creation of class
+                    System.out.println("Could not create an instance of class 'adventofcode.days.Day" + i + "'.");
                     System.out.println(e.toString());
                 }
             }
-        } catch (ClassNotFoundException e) { // jumps out of for-loop when class is not found
-        }
     }
 
     /**
@@ -102,7 +99,7 @@ public class AdventOfCode {
                             break;
                         case "-d":
                         case "--day":
-                            int day = Integer.parseInt(args[i+1]) - 1;
+                            int day = Integer.parseInt(args[i + 1]) - 1;
                             i++;
                             aoc.runDay(day);
                             break;

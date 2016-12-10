@@ -1,4 +1,4 @@
-package days;
+package adventofcode.days;
 
 import java.util.Scanner;
 import java.security.MessageDigest;
