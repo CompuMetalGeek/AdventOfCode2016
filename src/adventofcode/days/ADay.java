@@ -1,9 +1,7 @@
 package adventofcode.days;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public abstract class ADay {
@@ -18,7 +16,7 @@ public abstract class ADay {
      */
     public ADay(int dayNumber) {
         this.dayNumber = dayNumber;
-        this.inputLocation = "inputs/day" + dayNumber;
+        this.inputLocation = "adventofcode/inputs/day" + (dayNumber < 10 ? "0" + dayNumber : dayNumber);
     }
 
     /**

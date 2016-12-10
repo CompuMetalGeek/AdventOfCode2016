@@ -25,7 +25,7 @@ public class Day10 extends ADay {
                 }
             }
             int valueOut0 = bots.get(-1).input1, valueOut1 = bots.get(-2).input1, valueOut2 = bots.get(-3).input1;
-            System.out.printf("The product of outputs 0 (val=%d), 1 (val=%d) and 2 (val=%d) is %d.\n",valueOut0 , valueOut1 , valueOut2, valueOut0 * valueOut1 * valueOut2);
+            System.out.printf("The product of outputs 0 (val=%d), 1 (val=%d) and 2 (val=%d) is %d.\n", valueOut0, valueOut1, valueOut2, valueOut0 * valueOut1 * valueOut2);
 
         }
     }
