@@ -1,64 +1,53 @@
 package adventofcode.days;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Day11 extends ADay {
 
-    Map<String, Integer> indexOf;
-    int[] generatorLocations;
-    int[] chipLocations;
+    List<List<String>> building;
     int elevatorLocation;
 
     public Day11() {
         super(11);
     }
 
-    public void init(int capacity) {
-        indexOf = new HashMap<>();
-        generatorLocations = new int[capacity];
-        chipLocations = new int[capacity];
+    public void init() {
+        building = new ArrayList<>();
         elevatorLocation = 1;
     }
 
     @Override
     public void runDay() {
         try (Scanner sc = getInput()) {
-            init(5);
-            int freeIndex = 0;
-            int level = 1;
+            init();
+            int level = 0;
             while (sc.hasNextLine()) {
-
+                List<String> levelArray = new ArrayList<>();
                 String[] line = sc.nextLine().split(" and a |^The .* contains a |, (and )*a |\\.");
                 for (int i = 1; i < line.length; i++) {
-                    String element = line[i].substring(0, 2);
-                    // check if element has been assigned index
-                    if (!indexOf.containsKey(element)) {
-                        indexOf.put(element, freeIndex);
-                        freeIndex++;
-                    }
-                    // store the current level of the object
-                    if (line[i].endsWith("generator")) {
-                        generatorLocations[indexOf.get(element)] = level;
-                    } else {
-                        chipLocations[indexOf.get(element)] = level;
-                    }
+                    levelArray.add(line[i].substring(0, 2) + "-" + line[i].substring(line[i].lastIndexOf(" ")+1,line[i].lastIndexOf(" ")+2).toUpperCase());
                 }
                 level++;
+                building.add(levelArray);
             }
             printOverview();
         }
     }
 
     private void printOverview() {
-        for (int i = 4; i >0; i--) {
-            System.out.printf("F%d  %s  ", i, elevatorLocation == i ? "E" : ".");
-            for (Entry<String, Integer> entry : indexOf.entrySet()) {
-                System.out.printf("%s  %s  ", generatorLocations[entry.getValue()] == i ? entry.getKey()+"G" : " . ", chipLocations[entry.getValue()] == i ? entry.getKey()+"M" : " . ");
+        for (int i = building.size(); i > 0; i--) {
+            List<String> level = building.get(i - 1);
+            System.out.print("F" + i + " " + (elevatorLocation == i - 1 ? "E" : " ") + "  ");
+            for (int j = 0; j < level.size(); j++) {
+                System.out.print(level.get(j) + "  ");
             }
             System.out.println("");
         }
     }
+    
 }
