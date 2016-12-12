@@ -1,5 +1,8 @@
-!/build.xml
-!/manifest.mf
+!build.xml
+!manifest.mf
 !/src
 !/test
-!/nbproject
+build
+dist
+nbproject
+AOC.bat
