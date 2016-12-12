@@ -98,7 +98,7 @@ public class Day12 extends ADay {
             }
 
         }
-        System.out.printf("Register 'a' contains %d.\n", registers.get("a"));
+        System.out.printf("After running the code with initial registers a=%2d, b=%2d, c=%2d and d=%2d, the register 'a' contains %10d.\n", a, b, c, d, registers.get("a"));
     }
 
 }
