@@ -1,6 +1,5 @@
 package adventofcode.days;
 
-import java.lang.reflect.Field;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
