@@ -1,5 +1,6 @@
 package adventofcode.days;
 
+import java.lang.reflect.Field;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -30,13 +31,21 @@ public class Day16 extends ADay {
     }
 
     private String invertBits(String s) {
-        return s.replaceAll("1", "2").replaceAll("0", "1").replaceAll("2", "0");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '1') {
+                sb.append('0');
+            } else {
+                sb.append('1');
+            }
+        }
+        return sb.toString();
     }
 
     private void allongate() {
         StringBuilder sb = new StringBuilder(invertBits(data));
         sb.reverse();
-        sb.insert(0, "0");
+        sb.insert(0, '0');
         sb.insert(0, data);
 
         data = sb.toString();
@@ -47,12 +56,14 @@ public class Day16 extends ADay {
         Pattern p = Pattern.compile("[^1]");
         for (int i = 0; i < toChecksum.length(); i += n) {
             if (p.matcher(toChecksum.substring(i, i + n)).replaceAll("").length() % 2 == 0) {
-                sb.append("1");
+                sb.append('1');
             } else {
-                sb.append("0");
+                sb.append('0');
             }
         }
+
         checksum = sb.toString();
+
     }
 
     private void checksum() {
@@ -63,7 +74,7 @@ public class Day16 extends ADay {
             i *= 2;
         }
         i /= 2;
-        if(i<2){
+        if (i < 2) {
             throw new RuntimeException("Invalid length of a file");
         }
         checksum(toChecksum, i);
