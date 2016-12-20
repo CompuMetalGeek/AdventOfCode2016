@@ -65,20 +65,20 @@ public class Day20 extends ADay {
             System.out.printf("The lowest available number is %d.\n", index);
 
             long count = 0;
-            if(ranges.get(0).x>0){
-                count+=ranges.get(0).x;
+            if (ranges.get(0).x > 0) {
+                count += ranges.get(0).x;
             }
             long current_max = ranges.get(0).y;
-            for(Pair p:ranges){
-                if(p.x+1>current_max){
-                    count+=p.x-current_max-1;
+            for (Pair p : ranges) {
+                if (p.x + 1 > current_max) {
+                    count += p.x - current_max - 1;
                 }
-                if(p.y>current_max){
-                    current_max=p.y;
+                if (p.y > current_max) {
+                    current_max = p.y;
                 }
             }
-            if(current_max<MAX_VAL){
-                count+=MAX_VAL-current_max;
+            if (current_max < MAX_VAL) {
+                count += MAX_VAL - current_max;
             }
             System.out.printf("There are %d available numbers.\n", count);
         }
